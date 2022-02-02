@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 const AppContext = React.createContext();
 
@@ -22,18 +22,20 @@ export const AppProvider = ({ children }) => {
     setIsSubmenuOpen(false);
   };
 
-  <AppContext.Provider
-    value={{
-      isSidebarOpen,
-      isSubmenuOpen,
-      openSidebar,
-      closeSidebar,
-      openSubmenu,
-      closeSubmenu,
-    }}
-  >
-    {children}
-  </AppContext.Provider>;
+  return (
+    <AppContext.Provider
+      value={{
+        isSidebarOpen,
+        isSubmenuOpen,
+        openSidebar,
+        closeSidebar,
+        openSubmenu,
+        closeSubmenu,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 export const useGlobalContext = () => {
