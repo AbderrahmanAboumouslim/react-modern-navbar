@@ -4,9 +4,9 @@ function App() {
   return (
     <>
       <Navbar />
+      <Hero />
       <Sidebar />
       <Submenu />
-      <Hero />
     </>
   );
 }

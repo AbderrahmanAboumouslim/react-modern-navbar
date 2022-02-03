@@ -7,8 +7,7 @@
 }
 body {
   font-family: "Ubuntu", monospace, sans-serif;
-  background: var(--clr-grey-10);
-  color: var(--clr-grey-1);
+  background: #fff;
   line-height: 1.5;
   font-size: 0.875rem;
 }
@@ -22,7 +21,7 @@ h1,
 h2,
 h3,
 h4 {
-  letter-spacing: var(--spacing);
+  letter-spacing: 0.1rem;
   text-transform: capitalize;
   line-height: 1.25;
   margin-bottom: 0.75rem;
@@ -41,7 +40,7 @@ h4 {
 }
 p {
   margin-bottom: 1.25rem;
-  color: var(--clr-grey-5);
+  color: hsl(210, 22%, 49%);
 }
 @media screen and (min-width: 800px) {
   h1 {
