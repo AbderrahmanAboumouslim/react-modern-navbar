@@ -22,7 +22,7 @@ const Submenu = () => {
     if (links.length >= 4) {
       setColumns("repeat(4, 1fr)");
     }
-  }, [location]);
+  }, [location, links.length]);
 
   return (
     <SubmenuModal isSubmenuOpen={isSubmenuOpen} ref={centering}>
