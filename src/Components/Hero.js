@@ -6,7 +6,6 @@ import hero from "../assets/hero.svg";
 
 const Hero = () => {
   const data = useGlobalContext();
-  console.log(data);
   return (
     <Screen>
       <Container>

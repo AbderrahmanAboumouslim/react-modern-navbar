@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useGlobalContext } from "../Context/Context";
 
 const Submenu = () => {
-  const { isSubmenuOpen } = useGlobalContext();
-  return <SubmenuModal>submenu submenu submenu</SubmenuModal>;
+  const { isSubmenuOpen, location } = useGlobalContext();
+  const centering = useRef();
+
+  useEffect(() => {
+    const submenu = centering.current;
+    submenu.style.left = `${location}px`;
+  }, [location]);
+
+  return (
+    <SubmenuModal isSubmenuOpen={isSubmenuOpen} ref={centering}>
+      submenu submenu submenu
+    </SubmenuModal>
+  );
 };
 
 const SubmenuModal = styled.div`
@@ -15,7 +26,7 @@ const SubmenuModal = styled.div`
   left: 50%;
   transform: translateX(-50%);
   z-index: 6;
-  /* display: none; */
+  display: ${(props) => (props.isSubmenuOpen ? "block" : "none")};
   padding: 2rem;
   border-radius: 0.25rem;
   transition: all 0.3s linear;

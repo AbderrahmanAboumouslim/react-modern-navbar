@@ -5,7 +5,14 @@ import logo from "../assets/logo.svg";
 import { useGlobalContext } from "../Context/Context";
 
 const Navbar = () => {
-  const { openSidebar } = useGlobalContext();
+  const { openSidebar, openSubmenu } = useGlobalContext();
+
+  const showSubmenu = (e) => {
+    const page = e.target.textContent;
+    const bounding = e.target.getBoundingClientRect();
+    const center = (bounding.left + bounding.right) / 2;
+    openSubmenu(page, center);
+  };
   return (
     <Nav>
       <Container>
@@ -17,13 +24,13 @@ const Navbar = () => {
         </Header>
         <Links>
           <li>
-            <button>company</button>
+            <button onMouseOver={showSubmenu}>company</button>
           </li>
           <li>
-            <button>products</button>
+            <button onMouseOver={showSubmenu}>products</button>
           </li>
           <li>
-            <button>docs</button>
+            <button onMouseOver={showSubmenu}>docs</button>
           </li>
         </Links>
         <Signin>sign in</Signin>
