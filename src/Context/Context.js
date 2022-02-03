@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import sublinks from "../Components/data";
 
 const AppContext = React.createContext();
 
@@ -6,6 +7,7 @@ export const AppProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const [location, setLocation] = useState("");
+  const [page, setPage] = useState({ page: "", links: [] });
 
   const openSidebar = () => {
     setIsSidebarOpen(true);
@@ -16,6 +18,8 @@ export const AppProvider = ({ children }) => {
   };
 
   const openSubmenu = (page, center) => {
+    const currentPage = sublinks.find((sublink) => sublink.page === page);
+    setPage(currentPage);
     setLocation(center);
     setIsSubmenuOpen(true);
   };
@@ -34,6 +38,7 @@ export const AppProvider = ({ children }) => {
         openSubmenu,
         closeSubmenu,
         location,
+        page,
       }}
     >
       {children}
