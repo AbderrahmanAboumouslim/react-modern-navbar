@@ -5,9 +5,9 @@ import phone from "../assets/phone.svg";
 import hero from "../assets/hero.svg";
 
 const Hero = () => {
-  const data = useGlobalContext();
+  const { closeSubmenu } = useGlobalContext();
   return (
-    <Screen>
+    <Screen onMouseOver={closeSubmenu}>
       <Container>
         <Text>
           <h1>manage all your data in one place</h1>

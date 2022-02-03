@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 import logo from "../assets/logo.svg";
 import { useGlobalContext } from "../Context/Context";
 
 const Navbar = () => {
-  const { openSidebar, openSubmenu } = useGlobalContext();
+  const { openSidebar, openSubmenu, closeSubmenu } = useGlobalContext();
 
   const showSubmenu = (e) => {
     const page = e.target.textContent;
@@ -13,8 +13,15 @@ const Navbar = () => {
     const center = (bounding.left + bounding.right) / 2;
     openSubmenu(page, center);
   };
+
+  const hideSubmenu = (e) => {
+    if (!e.target.classList.contains("okidoki")) {
+      closeSubmenu();
+    }
+  };
+
   return (
-    <Nav>
+    <Nav onMouseOver={hideSubmenu}>
       <Container>
         <Header>
           <img src={logo} alt="logo" />
@@ -24,13 +31,19 @@ const Navbar = () => {
         </Header>
         <Links>
           <li>
-            <button onMouseOver={showSubmenu}>company</button>
+            <button onMouseOver={showSubmenu} className="okidoki">
+              company
+            </button>
           </li>
           <li>
-            <button onMouseOver={showSubmenu}>products</button>
+            <button onMouseOver={showSubmenu} className="okidoki">
+              products
+            </button>
           </li>
           <li>
-            <button onMouseOver={showSubmenu}>docs</button>
+            <button onMouseOver={showSubmenu} className="okidoki">
+              docs
+            </button>
           </li>
         </Links>
         <Signin>sign in</Signin>
